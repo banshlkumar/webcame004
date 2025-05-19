@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Full Stack Development in 100 Hours | Only ₹149!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #1e272e;
+            --darker: #0f1519;
+            --light: #f5f6fa;
+            --accent: #00cec9;
+            --text: #dfe6e9;
+            --text-secondary: #b2bec3;
+            --discount: #ff7675;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: var(--discount);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 118, 117, 0.4);
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .secondary-button:hover {
+            background: rgba(108, 92, 231, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 80px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(108, 92, 231, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button i {
+            color: white;
+            font-size: 30px;
+            margin-left: 5px;
+        }
+        
+        .play-button:hover {
+            background: var(--primary);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--darker);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h3 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(30, 39, 46, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+        
+        /* Curriculum Section */
+        .curriculum {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .modules {
+            margin-top: 50px;
+        }
+        
+        .module {
+            background: rgba(30, 39, 46, 0.7);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .module-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .module-header:hover {
+            background: rgba(108, 92, 231, 0.1);
+        }
+        
+        .module-header h4 {
+            font-size: 1.3rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .module-header i {
+            color: var(--primary);
+        }
+        
+        .module-header span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .module-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .module.active .module-content {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        .lessons {
+            list-style: none;
+        }
+        
+        .lesson {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .lesson:last-child {
+            border-bottom: none;
+        }
+        
+        .lesson-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .lesson-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lesson-icon i {
+            color: var(--primary);
+            font-size: 14px;
+        }
+        
+        .lesson-duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Instructor Section */
+        .instructor {
+            padding: 100px 0;
+            background-color: var(--darker);
+        }
+        
+        .instructor-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .instructor-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .instructor-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .instructor-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .instructor-badge i {
+            font-size: 2rem;
+        }
+        
+        .instructor-text {
+            flex: 1;
+        }
+        
+        .instructor-text h4 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .instructor-text h5 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .instructor-text p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+        
+        .instructor-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item h6 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: rgba(30, 39, 46, 0.7);
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 350px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-features li i {
+            color: var(--primary);
+        }
+        
+        .pricing-card .cta-button {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--darker);
+        }
+        
+        .testimonial-slider {
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background: rgba(30, 39, 46, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 0 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-author h5 {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-author p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-rating {
+            color: #fdcb6e;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: rgba(30, 39, 46, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(108, 92, 231, 0.1);
+        }
+        
+        .faq-question h5 {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .faq-question i {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            background: rgba(30, 39, 46, 0.5);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: var(--text-secondary);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-section .cta-button {
+            background: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo i {
+            color: var(--primary);
+            font-size: 24px;
+        }
+        
+        .footer-logo h4 {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-about p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h5 {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-newsletter p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+        
+        .newsletter-form input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-image {
+                margin-top: 50px;
+            }
+            
+            .instructor-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .instructor-badge {
+                right: 20px;
+            }
+            
+            .instructor-stats {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h3 {
+                font-size: 2rem;
+            }
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <h1>ProDev Academy</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#curriculum">Curriculum</a>
+                    <a href="#instructor">Instructor</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#testimonials">Reviews</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <button class="cta-button">Enroll Now</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Become a Full Stack Developer in 100 Hours</h2>
+                    <p>Master both frontend and backend development with our comprehensive course. Build real-world projects, learn from industry experts, and launch your tech career.</p>
+                    
+                    <div class="price-tag">
+                        Only ₹149 <span class="original-price">₹5,999</span>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <button class="cta-button">Enroll Now</button>
+                        <button class="secondary-button">
+                            <i class="fas fa-play"></i> Watch Preview
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Full Stack Development">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Preview Section -->
+    <div class="container">
+        <div class="video-container">
+            <video poster="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80">
+                <source src="#" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="play-button">
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h3>Why Choose Our Full Stack Course?</h3>
+                <p>We provide everything you need to go from beginner to professional developer in just 100 hours</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4>100+ Hours of Content</h4>
+                    <p>Comprehensive training covering frontend, backend, databases, and deployment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4>12+ Real Projects</h4>
+                    <p>Build portfolio-worthy applications including an e-commerce site and social media app.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Certificate of Completion</h4>
+                    <p>Get a verifiable certificate to showcase on LinkedIn and to employers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Expert Instructors</h4>
+                    <p>Learn from senior developers with 10+ years of industry experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4>Community Support</h4>
+                    <p>Join our exclusive Slack community with 10,000+ developers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4>Lifetime Access</h4>
+                    <p>Get free updates and new content added to the course.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <div class="section-title">
+                <h3>Detailed 100-Hour Curriculum</h3>
+                <p>Comprehensive training covering all aspects of Full Stack Development</p>
+            </div>
+            <div class="modules">
+                <div class="module">
+                    <div class="module-header">
+                        <h4><i class="fas fa-chevron-right"></i> Module 1: HTML, CSS & JavaScript (20 Hours)</h4>
+                        <span>Beginner to Advanced</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lessons">
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>HTML5 & Semantic Markup</h5>
+                                        <p>Learn modern HTML5 features and accessibility best practices</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">4h 30m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>CSS3, Flexbox & Grid</h5>
+                                        <p>Master modern layout techniques with CSS Grid and Flexbox</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">6h 15m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>JavaScript Fundamentals</h5>
+                                        <p>Variables, functions, DOM manipulation and ES6+ features</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">9h 15m</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module">
+                    <div class="module-header">
+                        <h4><i class="fas fa-chevron-right"></i> Module 2: Frontend with React (25 Hours)</h4>
+                        <span>Build Modern Web Apps</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lessons">
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>React Fundamentals</h5>
+                                        <p>Components, props, state and hooks</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">8h 20m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Advanced React Patterns</h5>
+                                        <p>Context API, Redux, and performance optimization</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">7h 45m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Next.js & Server-Side Rendering</h5>
+                                        <p>Build SEO-friendly applications with Next.js</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">9h 10m</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module">
+                    <div class="module-header">
+                        <h4><i class="fas fa-chevron-right"></i> Module 3: Backend with Node.js (30 Hours)</h4>
+                        <span>API Development & Databases</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lessons">
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Node.js & Express</h5>
+                                        <p>Build RESTful APIs with modern JavaScript</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">10h 15m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>MongoDB & PostgreSQL</h5>
+                                        <p>Work with both NoSQL and SQL databases</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">12h 30m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Authentication & Security</h5>
+                                        <p>JWT, OAuth, and security best practices</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">7h 15m</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module">
+                    <div class="module-header">
+                        <h4><i class="fas fa-chevron-right"></i> Module 4: Deployment & DevOps (15 Hours)</h4>
+                        <span>Cloud & CI/CD</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lessons">
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Docker & Containers</h5>
+                                        <p>Containerize your applications for easy deployment</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">5h 30m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>AWS & Cloud Deployment</h5>
+                                        <p>Deploy scalable applications on AWS infrastructure</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">6h 45m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>CI/CD with GitHub Actions</h5>
+                                        <p>Automate testing and deployment pipelines</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">2h 45m</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module">
+                    <div class="module-header">
+                        <h4><i class="fas fa-chevron-right"></i> Module 5: Final Projects (10 Hours)</h4>
+                        <span>Real-World Applications</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lessons">
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>E-Commerce Platform</h5>
+                                        <p>Full-stack application with payment integration</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">4h 15m</span>
+                            </li>
+                            <li class="lesson">
+                                <div class="lesson-info">
+                                    <div class="lesson-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Social Media Dashboard</h5>
+                                        <p>Real-time updates with WebSockets</p>
+                                    </div>
+                                </div>
+                                <span class="lesson-duration">5h 45m</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructor" id="instructor">
+        <div class="container">
+            <div class="section-title">
+                <h3>Learn From Industry Experts</h3>
+                <p>Our instructors have decades of combined experience at top tech companies</p>
+            </div>
+            <div class="instructor-content">
+                <div class="instructor-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Instructor">
+                    <div class="instructor-badge">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                </div>
+                <div class="instructor-text">
+                    <h4>Alex Johnson</h4>
+                    <h5>Senior Full Stack Developer & Educator</h5>
+                    <p>With over 12 years of experience building scalable web applications, Alex has worked with companies like Google, Netflix, and Uber. He specializes in React, Node.js, and cloud architecture.</p>
+                    <p>Alex has taught over 50,000 students worldwide and is passionate about making complex technical concepts accessible to everyone.</p>
+                    <div class="instructor-stats">
+                        <div class="stat-item">
+                            <h6>12+</h6>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h6>50K+</h6>
+                            <p>Students Taught</p>
+                        </div>
+                        <div class="stat-item">
+                            <h6>4.9</h6>
+                            <p>Average Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h3>Unbeatable Price - Only ₹149!</h3>
+                <p>Get lifetime access to this 100-hour course for less than the price of a pizza!</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card popular">
+                    <h4>Full Stack Developer Course</h4>
+                    <div class="price">₹149 <span class="original-price">₹5,999</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 100+ Hours of HD Video</li>
+                        <li><i class="fas fa-check"></i> 12+ Real-World Projects</li>
+                        <li><i class="fas fa-check"></i> Certificate of Completion</li>
+                        <li><i class="fas fa-check"></i> Downloadable Resources</li>
+                        <li><i class="fas fa-check"></i> Community Support</li>
+                        <li><i class="fas fa-check"></i> Lifetime Access</li>
+                    </ul>
+                    <button class="cta-button">Enroll Now for ₹149</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h3>Success Stories</h3>
+                <p>Hear from our students who transformed their careers</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah K.">
+                        </div>
+                        <div class="testimonial-author">
+                            <h5>Sarah K.</h5>
+                            <p>Junior Developer at Microsoft</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"This course completely changed my career trajectory. I went from working in retail to landing my dream job as a developer at Microsoft in just 8 months. The project-based approach gave me the confidence and portfolio I needed to stand out."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David R.">
+                        </div>
+                        <div class="testimonial-author">
+                            <h5>David R.</h5>
+                            <p>Full Stack Developer at Shopify</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The curriculum is incredibly comprehensive. I particularly appreciated the focus on both frontend and backend technologies. The career support team helped me negotiate a salary 30% higher than I expected for my first developer role."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya M.">
+                        </div>
+                        <div class="testimonial-author">
+                            <h5>Priya M.</h5>
+                            <p>Freelance Developer</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"As someone transitioning from a completely different field, I was nervous about learning to code. The structured approach and supportive community made all the difference. I now have a thriving freelance business building websites for clients."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h3>Frequently Asked Questions</h3>
+                <p>Everything you need to know before enrolling</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h5>Is this course really only ₹149?</h5>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We're running a special limited-time offer to make tech education accessible to everyone. The regular price is ₹5,999, but for a short time, you can get full lifetime access for just ₹149.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h5>How long will I have access to the course?</h5>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You get <strong>lifetime access</strong>! This includes all future updates and additional content we add to the course.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h5>Do I need any prior experience?</h5>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No prior experience is required! We start from the absolute basics and gradually progress to advanced topics. Many of our successful students started with zero coding knowledge.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h5>What if I don't like the course?</h5>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a <strong>30-day money-back guarantee</strong>. If you're not satisfied for any reason, just let us know and we'll issue a full refund.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h5>How soon can I get a developer job after this course?</h5>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Many of our students land jobs within 3-6 months of completing the course, depending on their dedication. The projects you build will give you a strong portfolio to showcase to employers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3>Ready to Launch Your Tech Career?</h3>
+            <p>Join thousands of students who transformed their lives with our Full Stack Development course. Enroll today for just ₹149!</p>
+            <button class="cta-button">Enroll Now for ₹149</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <h4>ProDev Academy</h4>
+                    </div>
+                    <p>We're on a mission to make high-quality tech education accessible to everyone, everywhere.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#curriculum">Curriculum</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Free Tutorials</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Career Guide</a></li>
+                        <li><a href="#">Interview Prep</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h5>Stay Updated</h5>
+                    <p>Subscribe to our newsletter for course updates, tech news, and exclusive offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ProDev Academy. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle modules
+        document.querySelectorAll('.module-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const module = header.parentElement;
+                module.classList.toggle('active');
+                
+                // Close other open modules
+                document.querySelectorAll('.module').forEach(otherModule => {
+                    if (otherModule !== module && otherModule.classList.contains('active')) {
+                        otherModule.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Toggle FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== faqItem && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Play video
+        const playButton = document.querySelector('.play-button');
+        const video = document.querySelector('video');
+        
+        playButton.addEventListener('click', () => {
+            video.play();
+            playButton.style.display = 'none';
+        });
+        
+        video.addEventListener('click', () => {
+            video.pause();
+            playButton.style.display = 'flex';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
